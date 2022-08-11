@@ -4,10 +4,10 @@ import random
 import os
 import re
 
-chapters = glob.glob('pic_test/*.png')
+chapters = glob.glob('pic/*.png')
 ind = list(range(len(chapters)))
 random.shuffle(ind)
-ipfs = ''
+ipfs = 'ipfs://QmVNu9dqHw64dvgn9xvJaUSykq2FY8jyPdAH1GSv7W3549'
 labels = {
     'HotspotSensitive': 'Polity',
     'PersonalAttack': 'Abuse',
@@ -39,11 +39,11 @@ def parse_title(title):
     num = title_list[0].replace(book, '')
     label = title_list[-1].replace('sublabel(', '').replace(')', '')
     attr = {'Polity': set(),
-                'Abuse': set(),
-                'Porn': set(),
-                'Terror': set(),
-                'Ad': set(),
-                'Illegal': set()}
+            'Abuse': set(),
+            'Porn': set(),
+            'Terror': set(),
+            'Ad': set(),
+            'Illegal': set()}
     attributes = []
 
     label_list = label.split(',')
@@ -70,6 +70,6 @@ for i in ind:
                 'image': ipfs + f'/{str(i+1)}.png',
                 'attributes': attr
                 }
-    os.rename(chapters[i], f'pic_test\\{str(i+1)}.png')
-    with open(f'pic_test\\{str(i+1)}.json', 'w', encoding='utf-8') as f:
-        json.dump(metadata, f, indent=2, ensure_ascii=False)
+    os.rename(chapters[i], f'pic\\{str(i+1)}.png')
+    with open(f'metadata\\{str(i+1)}', 'w', encoding='utf-8') as f:
+        json.dump(metadata, f, ensure_ascii=False)
