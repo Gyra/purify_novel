@@ -1,5 +1,8 @@
 novel/
 .env
+/metadata/
+/pic/
+/pic_test/
 /dirty_library_HongLouMeng.txt
 /dirty_library_Sanguo.txt
 /dirty_library_ShuiHuZhuan.txt
